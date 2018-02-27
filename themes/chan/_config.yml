@@ -1,0 +1,87 @@
+# chan theme configuration
+
+# site setting
+rss: /atom.xml
+#favicon logo
+favicon: https://avatars1.githubusercontent.com/u/16728459?s=400&u=20cfd147cbde4ffc7d4f1e84dd0102f7ba6f69ba&v=4
+
+# style setting
+monochrome: true
+
+# view setting
+#头像
+avatar: https://avatars1.githubusercontent.com/u/16728459?s=400&u=20cfd147cbde4ffc7d4f1e84dd0102f7ba6f69ba&v=4
+#头像处链接
+avatarLink: /about
+maxContentWidth: 1000px # set the main content column's max-width property. keep it blank to unlimited the width
+copyright: # the copyright text in the footer, could be richtext
+
+# sidebar navigator structure
+# It's a list with item that is also list.
+# The item of first level list means a group of links,
+# and the item of the second level list means exactly a link.
+# A link item is an object whit two properties: 'name' for displaying and 'link' for redirecting.
+# 以http / https开头的链接将被渲染为具有'target =“_ blank”的标签''
+# 还有一些用字符串表示的特殊链接项：'categories'，'tags'和'archives'
+nav:
+  -
+    - categories # display a collapsible category list
+    - tags       # display a collapsible tag list
+    - archives   # display a collapsible archive list
+  -
+    -
+      name: 首页
+      url: '/'
+    -
+      name: 文章
+      url: /archives
+  -
+    -
+      name: Github
+      url: https://github.com/heavenswen
+    -
+      name: 码云
+      url: https://gitee.com/423822728
+    -
+      name: RSS
+      url: /atom.xml
+
+# duoshuo shortname
+# refer to http://duoshuo.com
+# If you use disqus then you should set disqus_shortname in your site config and disable duoshuo here.
+# You also need to set 'comments' to true in the front-matter
+#duoshuo: sprabbit
+
+# jiathis share id
+# refer to http://jiathis.com
+#jiathis: 1589291
+
+# open graph
+twitter:
+google_plus:
+fb_admins:
+fb_app_id:
+
+# analytics ids
+##站长工具 网站统计
+google_analytics:
+baidu_statistics: 5cb77844079f4ad2f116b71f7b17d3e1
+
+# default creative commons
+# There are 6 kinds of combination and place 'none' to disable.
+# - by
+# - by-sa
+# - by-nd
+# - by-nc
+# - by-nc-sa
+# - by-nc-nd
+# - none
+# This setting could be overwritten in the front matter of a post.
+# More details in https://creativecommons.org
+cc: by-sa
+
+# FancyBox / PhotoSwipe
+# Although it is called fancybox, we use PhotoSwipe instead.
+# Check http://photoswipe.com
+fancybox: true    # enable fancybox/photoswipe rendering
+# photoswipe: true  # the same

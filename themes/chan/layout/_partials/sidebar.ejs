@@ -1,0 +1,65 @@
+<div class="sidebar">
+  <div class="header">
+    <!-- 大标题 -->
+    <h1 class="title"><a href="<%- url_for('/') %>"><%= config.title %></a></h1>
+    <% if (config.description) { %>
+      <!-- 描述 -->
+      <p class="subtitle">
+        <%= config.description %>
+      </p>
+    <% } %>
+    <div class="info">
+      <div class="content">
+        <!-- 副标题 -->
+        <% if (config.subtitle) { %>
+          <div class="description"><%= config.subtitle %></div>
+        <% } %>
+        <% if (config.author) { %>
+        <!-- 作者名 -->
+          <div class="author"><%= config.author %></div>
+        <% } %>
+      </div>
+      <!-- 头像 -->
+      <% if (theme.avatar) { %>
+        <div class="avatar">
+          <% if (theme.avatarLink) { %>
+            <a href="<%= theme.avatarLink %>"><img src="<%= theme.avatar %>"></a>
+          <% } else { %>
+            <img src="<%= theme.avatar %>">
+          <% } %>
+        </div>
+      <% } %>
+    </div>
+  </div>
+  <div class="body">
+    <!-- 导航列表 -->
+    <% if (theme.nav && theme.nav.length) { %>
+      <% theme.nav.forEach(function(list) { %>
+        <ul class="nav">
+          <% list.forEach(function(item){ %>
+            <% if (item === 'categories') { %>
+              <li class="category-list-container">
+                <a href="javascript:;">分类</a>
+                <%- list_categories({depth: -1}) %>
+              </li>
+            <% } else if (item === 'tags') { %>
+              <li class="tag-list-container">
+                <a href="javascript:;">标签</a>
+                <%- list_tags({}) %>
+              </li>
+            <% } else if (item === 'archives') { %>
+              <li class="archive-list-container">
+                <a href="javascript:;">归档</a>
+                <%- list_archives({type: 'yearly'}) %>
+              </li>
+            <% } else { %>
+              <li>
+                <%- link_to(item.url, item.name, {external: item.url.indexOf('http') === 0}) %>
+              </li>
+            <% } %>
+          <% }) %>
+        </ul>
+      <% }); %>
+    <% } %>
+  </div>
+</div>
