@@ -1,7 +1,9 @@
 <!-- 列表 -->
 <% var last; %>
 <% page.posts.each(function(post){ %>
+  <!-- get year -->
   <% var year = post.date.year(); %>
+
   <% if (is_archive()) { %>
     <% if (last != year){ %>
       <% if (last != null){ %>

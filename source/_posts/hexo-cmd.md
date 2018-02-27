@@ -7,13 +7,13 @@ categories: 工具
 ## 快速开始
 
 ### 创建新文章
-
-``` bash
+生成文件架my-new-post，并不是文件名
+``` 
 $ hexo new "My New Post"
 ```
 
-### 创建新页面
-#### 页面引索为/
+### 创建根目录页面
+不会出现在文章列表中
 ```
 $ hexo new page "about"
 ```
