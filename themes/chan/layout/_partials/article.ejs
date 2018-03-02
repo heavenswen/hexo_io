@@ -4,44 +4,64 @@
     <h1 class="article-header">
       <%- post.title %>
     </h1>
-  <% } %>
-  <% if (post.subtitle){ %>
-    <h2 class="article-header">
-      <%- post.subtitle %>
-    </h2>
-  <% } %>
-  <%- partial('post/gallery') %>
-  <div class="article-info">
-    <%- partial('post/date') %>
-    <%- partial('post/category') %>
-    <%- partial('post/tag') %>
-  </div>
-  <div class="article-entry">
-    <%- post.content %>
-  </div>
-  <footer class="article-footer">
-    <%- partial('post/cc') %>
-    <%- partial('post/jiathis') %>
-  </footer>
-  <!-- 来必力City版安装代码 -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC8zNDMwNS8xMDg0Mg==">
-	<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
+    <% } %>
+      <% if (post.subtitle){ %>
+        <h2 class="article-header">
+          <%- post.subtitle %>
+        </h2>
+        <% } %>
+          <%- partial('post/gallery') %>
+            <div class="article-info">
+              <%- partial('post/date') %>
+                <%- partial('post/category') %>
+                  <%- partial('post/tag') %>
+                    <a target="_blank" id="fx">分享到QQ</a>
+            </div>
+            <div class="article-entry">
+              <%- post.content %>
+            </div>
+            <footer class="article-footer">
+              <%- partial('post/cc') %>
+                <%- partial('post/jiathis') %>
+            </footer>
+            <!-- 分享 -->
+            <script>
+              (function () {
+                var Config = {
+                  url: location.href,
+                  title: "<%- post.title %>",
+                  summary:document.querySelector(".article-entry").textContent.replace(/\s{*}/g,'').substr(0,50), /*分享摘要(可选)*/
+                  pics: '<%- theme.avatar %>', /*分享图片(可选)*/
+                  site: '<%- config.author %>', /*分享来源(可选) 如：QQ分享*/
+                };
+                var p = Config;
+                var s = [];
+                for (var i in p) {
+                  s.push(i + '=' + encodeURIComponent(p[i] || ''));
+                }
+                document.querySelector("#fx").href = "http://connect.qq.com/widget/shareqq/index.html?" + s.join('&');
+              })();
+            </script>
+            <!-- 分享 end-->
+            <!-- 来必力City版安装代码 -->
+            <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDMwNS8xMDg0Mg==">
+              <script type="text/javascript">
+                (function (d, s) {
+                  var j, e = d.getElementsByTagName(s)[0];
 
-       if (typeof LivereTower === 'function') { return; }
+                  if (typeof LivereTower === 'function') { return; }
 
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
+                  j = d.createElement(s);
+                  j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                  j.async = true;
 
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-	</script>
-<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
-</div>
-<!-- City版安装代码已完成 -->
+                  e.parentNode.insertBefore(j, e);
+                })(document, 'script');
+              </script>
+              <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+            </div>
+            <!-- City版安装代码已完成 -->
 </article>
 
 <%- partial('post/duoshuo') %>
-<%- partial('post/disqus') %>
+  <%- partial('post/disqus') %>
