@@ -23,7 +23,7 @@
       <% if (theme.avatar) { %>
         <div class="avatar">
           <% if (theme.avatarLink) { %>
-            <a href="<%= theme.avatarLink %>"><img src="<%= theme.avatar %>"></a>
+            <a href="<%= theme.avatarLink%>" title="<%= theme.avatarLinkTitle%>"><img src="<%= theme.avatar %>"></a>
           <% } else { %>
             <img src="<%= theme.avatar %>">
           <% } %>

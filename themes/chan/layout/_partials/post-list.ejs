@@ -31,6 +31,7 @@
         <%- partial('_partials/post/tag', {post: post}) %>
       </div>
       <div class="article-entry">
+        
         <% if (post.excerpt) { %>
           <%- post.excerpt %>
           <p>
@@ -39,7 +40,13 @@
             </a>
           </p>
         <% } else { %>
-          <%- post.content %>
+          <!-- 摘要 -->
+          <% var br = post.content.indexOf('\n') %>
+          <% if(br < 0) { %>
+            <%- post.content %>
+          <% } else { %>
+            <%- post.content.substring(0, br) %>
+          <% } %>
         <% } %>
       </div>
     </div>
