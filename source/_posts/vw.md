@@ -6,9 +6,10 @@ categories: [UI,插件]
 ---
 ## 简介
 
-手机端自适应开发的新方案，vw单位能够根据屏幕占比自动适应内容，不依靠js快速响应。
-
-建议依靠postcss-vw 解决方案，快速转换px单位。
+手机端自适应开发的新方案，vw单位能够根据屏幕占比自动适应内容，不依靠js快速响应,避免了js方案（rem，viewport操作）出现的回流想象。
+>1. 当render tree中的一部分(或全部)因为元素的规模尺寸，布局，隐藏等改变而需要重新构建。这就称为回流(reflow)。每个页面至少需要一次回流，就是在页面第一次加载的时候。在回流的时候，浏览器会使渲染树中受到影响的部分失效，并重新构造这部分渲染树，完成回流后，浏览器会重新绘制受影响的部分到屏幕中，该过程成为重绘。
+>2. 当render tree中的一些元素需要更新属性，而这些属性只是影响元素的外观，风格，而不会影响布局的，比如background-color。则就叫称为重绘。
+>注意：回流必将引起重绘，而重绘不一定会引起回流。
 
 
 ### 参数
@@ -25,7 +26,7 @@ categories: [UI,插件]
  #### Android 4.4之下和iOS8以下的版本都存有一定的问题
 > vw兼容方案
 > 在你的HTML文件，比如index.html中的 head 或 body引入下面的JavaScript文件：
-```
+>```
 <scriptsrc="//g.alicdn.com/fdilab/lib3rd/viewport-units-buggyfill/0.6.2/??viewport-units-buggyfill.hacks.min.js,viewport-units-buggyfill.min.js"></script>
 
 // 调用viewport-units-buggyfill的方法
@@ -36,8 +37,9 @@ window.onload = function() {
     });
 }
 </script>
-```
+>```
 
+当建议依靠postcss-vw 解决方案，快速转换px单位，避免了计算的苦恼。
 ### 操作
 依照设计稿 750 === 100vw 计算
 ```
@@ -48,6 +50,8 @@ window.onload = function() {
 
 ```
 ### 工具
+
+#### webpack 
 使用postcss-loader postcss-px2viewport 跟据设计稿生成vw单位。
 ```
 num i postcss-loader
@@ -79,7 +83,7 @@ module.exports = {
     }
 }
 ```
-#### 使用
+##### 使用
 运行webpack直接将css中px 转换成 vw 单位
 ```
 body{
